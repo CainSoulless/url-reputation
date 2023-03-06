@@ -4,23 +4,32 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By 
 
+# webdriver-manager
+from webdriver_manager.firefox import GeckoDriverManager
+
+# utils
 from utils import resources
 from utils import url_encode 
+
+# webpages
+from webpages import ibm_xforce
+
+import os
+
+
+def check_geckodriver_installation():
+    if not os.path.exists("/snap/bin/geckodriver"):
+        webdriver.Firefox(executable_path=GeckoDriverManager().install())
 
 
 def get_screeshots(target):
     firefox_option = Options()
-    firefox_option.add_argument("--headless")
-    service = Service("/snap/bin/geckodriver")
+    # firefox_option.add_argument("--headless")
+    service = Service(GeckoDriverManager().install())
 
     driver = webdriver.Firefox(service=service, options=firefox_option)
+    ibm_xforce(target, driver)
 
 
-    driver.quit()
-    resources = resources()
-
-    for i, resource in enumerate(resources):
-        payload = resource + url_encode(target)
-        driver.get(payload)
-        element = driver.find_element(By.CLASS_NAME, value=resource[1])
-        element.screenshot("/tmp/screen{1}.png")
+# check_geckodriver_installation()
+get_screeshots("google.com")

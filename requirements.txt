@@ -1,0 +1,3 @@
+selenium
+webbrowser
+webdriver_manager
