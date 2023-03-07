@@ -2,7 +2,7 @@ import webbrowser as wb
 import os
 
 # lib
-from lib.system_report import report_creator
+from bin.lib.report_system import report_creator
 from lib.utils import resources
 
 # utils

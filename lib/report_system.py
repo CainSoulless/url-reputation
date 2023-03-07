@@ -1,17 +1,11 @@
 # API 
 import requests
 
-# filenaming
-from datetime import date
-
 import os
+import sys
 
-def filename_creator(target):
-    datetime = date.today()
-    filename = f"{str(target)}-{datetime}.txt"
-
-    return filename 
-
+# Utils
+from lib.utils import get_report_dir_info
 
 def api_id(target):
     url = "https://www.virustotal.com/api/v3/urls"
@@ -35,8 +29,15 @@ def api_id(target):
 
 
 def report_creator(target):
-    filename = filename_creator(target)
+    report_dir_info = get_report_dir_info(target)
     report_body = api_id(target)
 
-    with open(f"..\\reports\\{filename}", "w") as f:
-        f.write(report_body)
+    try:
+        os.mkdir(report_dir_info["report_folder"])
+
+        with open(report_dir_info["report_filename_txt"], 'w') as f:
+            f.write(report_body)
+    except:
+        sys.exit(1)
+
+report_creator("google.com")
