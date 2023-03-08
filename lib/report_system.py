@@ -1,11 +1,12 @@
 # API 
 import requests
 
-import os
-import sys
-
 # Utils
 from lib.utils import get_report_dir_info
+
+# Natives
+import os
+import sys
 
 def api_id(target):
     url = "https://www.virustotal.com/api/v3/urls"
@@ -39,5 +40,3 @@ def report_creator(target):
             f.write(report_body)
     except:
         sys.exit(1)
-
-report_creator("google.com")

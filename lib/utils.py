@@ -32,13 +32,13 @@ def url_encode(target):
 
 def report_name_creator(target):
     datetime = date.today()
-    name = f"{str(target)}-{datetime}.txt"
+    name = f"{str(target)}-{datetime}"
 
     return name 
 
 
 def get_report_dir_info(target):
-    report_dir = os.path.join(os.getcwd(), "..", "..", "reports")
+    report_dir = os.path.join(os.getcwd(), "reports")
     folder_name = report_name_creator(target)
     report_folder = os.path.join(report_dir, folder_name)
     report_filename_txt = os.path.join(report_folder, f"{target}.txt")

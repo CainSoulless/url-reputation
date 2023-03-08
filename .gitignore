@@ -1,3 +1,3 @@
 geckodriver.log
 reports/*
-bin/lib/__pycache__
+lib/__pycache__
