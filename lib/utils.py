@@ -2,7 +2,7 @@
 import urllib.parse
 
 # filenaming
-from datetime import date
+import datetime
 
 import os
 
@@ -31,10 +31,13 @@ def url_encode(target):
 
 
 def report_name_creator(target):
-    datetime = date.today()
-    name = f"{str(target)}-{datetime}"
+    now = datetime.datetime.now()
+    actual_hour = now.strftime("%H:%M")
+    actual_day = now.strftime("%d-%m")
+    
+    filename = f"{target}_{actual_hour}_{actual_day}"
 
-    return name 
+    return filename 
 
 
 def get_report_dir_info(target):

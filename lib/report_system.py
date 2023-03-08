@@ -33,10 +33,13 @@ def report_creator(target):
     report_dir_info = get_report_dir_info(target)
     report_body = api_id(target)
 
-    try:
-        os.mkdir(report_dir_info["report_folder"])
+    os.mkdir(report_dir_info["report_folder"])
 
+    try:
         with open(report_dir_info["report_filename_txt"], 'w') as f:
             f.write(report_body)
+        print("[+] Reporte de texto creado con exito.")
     except:
-        sys.exit(1)
+        raise ValueError("[-] Error creando el reporte de texto.")
+        # print("[-] Error creando el reporte de texto.")
+        # sys.exit(1)

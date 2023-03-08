@@ -7,7 +7,7 @@ from lib.screen_saver import get_screeshots
 # lib
 from lib.report_system import report_creator
 
-# TODO: Configuration arg with parseargs
+# TODO: Configuration arg with argparse
 """
 Example:
     -c or --config to install the geckoDrickoDriver
