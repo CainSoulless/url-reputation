@@ -1,3 +1,4 @@
 geckodriver.log
 reports/*
+!reports/not_delete
 lib/__pycache__

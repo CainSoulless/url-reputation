@@ -9,16 +9,15 @@ from lib.utils import get_report_dir_info
 from lib.utils import resources
 
 import os
+import time 
 
 
 def ibm_xforce(target, driver):
-    screenshot_dir_name = os.path.join(report_folder[report_folder], "ibm_xforce.png")
-    report_folder = get_report_dir_info(target)
-    resource = resources(target)
+    print("[*] IBM X-force, creando screenshot.")
 
-    print()
-    print(screenshot_dir_name)
-    print()
+    report_folder = get_report_dir_info(target)
+    screenshot_dir_name = os.path.join(report_folder["report_folder"], "ibm_xforce.png")
+    resource = resources(target)
 
     driver.get(resource[0][0])
 
@@ -27,15 +26,30 @@ def ibm_xforce(target, driver):
     boton2 = driver.find_element(by=By.CLASS_NAME, value="guestlogin")
     boton2.click()
 
-    element = driver.find_element(By.CLASS_NAME, value=resource[0][1])
-    element.screenshot(screenshot_dir_name)
+    try:
+        element = driver.find_element(By.CLASS_NAME, value=resource[0][1])
+        element.screenshot(screenshot_dir_name)
+        print("[+] Screenshot creado con exito.\n")
+    except:
+        # Omited raise Exception 
+        print("[-] Error al crear screenshot.\n")
     
 
-# TODO: Find the way to just screeshot the 'report' id
+# TODO: Find the way to just screeshot the 'report' id of the DOM tree.
 def virus_total(target, driver):
+    print("[*] VirusTotal, creando screenshot.")
+
     report_folder = get_report_dir_info(target)
+    screenshot_dir_name = os.path.join(report_folder["report_folder"], "virus_total.png")
     resource = resources(target)
 
-    driver.get(resource[1][0])
-    driver.save_screenshot(os.path.join(report_folder[report_folder], "virus_total.png"))
+    try:
+        driver.get(resource[1][0])
+        # driver.implicitly_wait(2)
+        time.sleep(2)
 
+        driver.save_screenshot(screenshot_dir_name)
+        print("[+] Screenshot creado con exito.\n")
+    except:
+        # Omited raise Exception 
+        print("[-] Error al crear screenshot.\n")

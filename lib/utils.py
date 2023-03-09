@@ -16,23 +16,22 @@ def resources(target):
         ["https://urlscan.io/search/"]
     ]
 
-    # resources_list = [
-    #     "https://www.virustotal.com/gui/search/",
-    #     "https://exchange.xforce.ibmcloud.com/url/",
-    #     "https://urlscan.io/search/"
-    # ]
-
     return resources_list
 
 
 def url_encode(target):
     url_encoded = urllib.parse.quote_plus(target)
+
     return url_encoded
 
 
-def report_name_creator(target):
+def get_report_name_creator(target):
+    # Just traverse the string and replace all dot for prevent
+    # problems.
+    target = target.replace('.', '')
+
     now = datetime.datetime.now()
-    actual_hour = now.strftime("%H:%M")
+    actual_hour = now.strftime("%H-%M")
     actual_day = now.strftime("%d-%m")
     
     filename = f"{target}_{actual_hour}_{actual_day}"
@@ -42,7 +41,7 @@ def report_name_creator(target):
 
 def get_report_dir_info(target):
     report_dir = os.path.join(os.getcwd(), "reports")
-    folder_name = report_name_creator(target)
+    folder_name = get_report_name_creator(target)
     report_folder = os.path.join(report_dir, folder_name)
     report_filename_txt = os.path.join(report_folder, f"{target}.txt")
 
@@ -53,4 +52,7 @@ def get_report_dir_info(target):
             "report_filename_txt": report_filename_txt
     }
 
-get_report_dir_info("google.com")
+
+def open_folder(target):
+    report_dir_info = get_report_dir_info(target)
+    os.startfile(report_dir_info["report_folder"])
