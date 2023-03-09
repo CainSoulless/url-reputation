@@ -7,6 +7,9 @@ from lib.screen_saver import get_screeshots
 # lib
 from lib.report_system import report_creator
 
+# Utils
+from lib.utils import open_folder 
+
 # TODO: Configuration arg with argparse
 """
 Example:
@@ -27,3 +30,4 @@ if __name__ == "__main__":
     target = sys.argv[1]
     report_creator(target)
     get_screeshots(target)
+    open_folder(target)

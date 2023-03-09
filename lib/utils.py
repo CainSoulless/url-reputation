@@ -55,4 +55,10 @@ def get_report_dir_info(target):
 
 def open_folder(target):
     report_dir_info = get_report_dir_info(target)
-    os.startfile(report_dir_info["report_folder"])
+    report_dir_info = report_dir_info["report_dir"]
+    folder_list = sorted(os.listdir(report_dir_info), key=lambda carpeta: 
+                         os.stat(os.path.join(report_dir_info, carpeta)).st_ctime, 
+                         reverse=True)
+
+    latest_folder = os.path.join(report_dir_info, folder_list[0])
+    os.startfile(latest_folder)
