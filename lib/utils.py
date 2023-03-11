@@ -62,3 +62,7 @@ def open_folder(target):
 
     latest_folder = os.path.join(report_dir_info, folder_list[0])
     os.startfile(latest_folder)
+
+
+def get_config_path():
+    return os.path.join(os.getcwd(), "config", "config.init")

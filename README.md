@@ -15,10 +15,14 @@ Bases de datos actuales:
 - Abre automaticamente la carpeta del reporte
 
 ## Instalacion
-Se debe descargar de forma manual e instalar el driver oficial de Mozilla a la siguiente ruta:
-`C:\geckodriver\geckodriver.exe`
-El link es el siguiente, recordar descargar win32:
-`https://github.com/mozilla/geckodriver/releases` 
+Al tenerlo ya descargado, se procede a configurar el entorno:
+```
+python .\url-reputation.py --config 
+o
+python .\url-reputation.py -c 
+```
+
+Importante que esta funcion solo es posible en entornos Windows, por el momento.
 
 ## Uso
 Se debe ingresar una URL en el argumento del programa

@@ -1,14 +1,19 @@
 # Native imports
 import sys
 
-# Custom imports
-from lib.screen_saver import get_screeshots
-
 # lib
+from lib.screen_saver import get_screeshots
 from lib.report_system import report_creator
 
 # Utils
 from lib.utils import open_folder 
+
+# Config
+from config.config import config_checker
+
+# Args
+from utils.args import args
+
 
 # TODO: Configuration arg with argparse
 """
@@ -22,11 +27,10 @@ Example:
 """ 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(f"Usage: \npython {sys.argv[0]} TARGET")
-        print(f"Example: python {sys.argv[0]} google.com")
-        sys.exit(1)
-
     target = sys.argv[1]
+
+    config_checker()
+
+    args()
     report_creator(target)
     get_screeshots(target)

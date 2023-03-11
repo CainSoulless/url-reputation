@@ -1,21 +1,27 @@
-# API 
+# API consuption
 import requests
 
 # Utils
 from lib.utils import get_report_dir_info
 
+# ConfiParser
+import configparser
+
 # Natives
 import os
-import sys
+
 
 def api_id(target):
+    config = configparser.ConfigParser()
+    config.read("config/config.init")
     url = "https://www.virustotal.com/api/v3/urls"
+    api_key = config.get("VirusTotal", "api_key")
 
     payload = f"url={target}"
     headers = {
         "accept": "application/json",
         "content-type": "application/x-www-form-urlencoded",
-        "x-apikey": "6a3e7dfab4a4bcc7b85e0465331b4d67a1e03aa5cbee1bdccfb0eccdac25073c"
+        "x-apikey": config.get("VirusTotal", "api_key")
     }
 
     response = requests.post(url, data=payload, headers=headers).json()
