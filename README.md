@@ -21,13 +21,15 @@ python .\url-reputation.py --config
 o
 python .\url-reputation.py -c 
 ```
-
+Hay que tener en cuenta que pedira una API KEY de VirusTotal, puedes encontrarlo [aqui](https://www.virustotal.com/). \
 Importante que esta funcion solo es posible en entornos Windows, por el momento.
 
 ## Uso
 Se debe ingresar una URL en el argumento del programa
 ```
 python .\url-reputation.py example.com
+o 
+python .\url-reputation.py 142.250.0.113
 ```
 En caso de no ingresar la URL, el programa avisa y se cierra:
 ```
