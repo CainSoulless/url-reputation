@@ -9,26 +9,27 @@ import configparser
 import shutil
 import os
 
+# 
 from lib.utils import get_config_path 
 
-def set_geckodriver_installation():
-    dest_path = "C:\\geckodriver\\"
 
-    try:
-        executable_path = GeckoDriverManager().install()
-        os.makedirs(dest_path)
-        shutil.copy(executable_path, dest_path)
+# def set_geckodriver_installation():
+#     geckodriver_dir = os.getcwd() + "\\config\\geckodriver\\geckodriver.exe"
+#     destine_dir = "C:\\geckodriver\\"
 
-        print("[+] Driver instalado con exito")
-    except:
-        if not os.path.exists(dest_path + "geckodriver"):
-            print("[+] El archivo ya existe.")
-        else:
-            print("[-] No fue posible configurar driver, configure"
-                    "manualmente copiando y pegando el driver a la ruta "
-                    "C:\geckodriver\.")
+#     try:
+#         os.makedirs(destine_dir)
+#         shutil.copy(geckodriver_dir, destine_dir)
+#         print("[+] Driver instalado con exito")
+#     except:
+#         if os.path.exists("C:\\geckodriver\\geckodriver.exe"):
+#             print("[+] El archivo ya existe.")
+#         else:
+#             print("[-] No fue posible configurar driver, configure"
+#                     "manualmente copiando y pegando el driver a la ruta "
+#                     "C:\geckodriver\.")
 
-        return 1
+#         return 1
 
 
 def create_config_file():
@@ -64,17 +65,12 @@ def set_api_key():
 
 
 def config_checker():
-    # config_path = os.path.join(os.getcwd(), "config", "config.init")
+    geckodriver_dir = os.getcwd() + "\\config\\geckodriver\\geckodriver.exe"
     config_path = get_config_path()
-    print()
-    print(config_path)
-    print()
 
-    driver_path = "C:\\geckodriver\\geckodriver.exe"
-    if not os.path.exists(config_path) or not os.path.exists(driver_path):
+    if not os.path.exists(config_path) or not os.path.exists(geckodriver_dir):
         print("[-] No se han encontrado archivos importantes para el ",
               "funcionanmiento del programa.")
-        exit()
 
 
 def config_arg(optino, opt_str, value, parser):
@@ -82,6 +78,6 @@ def config_arg(optino, opt_str, value, parser):
     Functions wrapper just for arg --config,
     this is not a main function for config.py.
     """
-    set_geckodriver_installation()
+    # set_geckodriver_installation()
     create_config_file()
     set_api_key()

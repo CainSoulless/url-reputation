@@ -45,11 +45,23 @@ def virus_total(target, driver):
 
     try:
         driver.get(resource[1][0])
-        # driver.implicitly_wait(2)
         time.sleep(2)
-
         driver.save_screenshot(screenshot_dir_name)
         print("[+] Screenshot creado con exito.\n")
     except:
-        # Omited raise Exception 
         print("[-] Error al crear screenshot.\n")
+
+
+def abuseIPDB(target, driver):
+    print("[*] abuseIPDB, creando screenshot.")
+
+    report_folder = get_report_dir_info(target)
+    screenshot_dir_name = os.path.join(report_folder["report_folder"], "abuseipdb.png")
+    resource = resources(target)
+
+    driver.get(resource[2][0])
+
+    element = driver.find_element(By.CLASS_NAME, value=resource[2][1])
+    element.screenshot(screenshot_dir_name)
+
+    print("[+] Screenshot creado con exito.\n")

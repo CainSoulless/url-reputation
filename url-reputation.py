@@ -7,6 +7,7 @@ from lib.report_system import report_creator
 
 # Utils
 from lib.utils import open_folder 
+from lib.utils import banner 
 
 # Config
 from config.config import config_checker
@@ -27,8 +28,12 @@ Example:
 """ 
 
 if __name__ == "__main__":
-    target = sys.argv[1]
+    if len(sys.argv) < 2:
+        print(f"Usage: python {sys.argv[0]} TARGET")
+        sys.exit()
 
+    target = sys.argv[1]
+    banner()
     config_checker()
 
     args()

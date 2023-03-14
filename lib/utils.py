@@ -13,7 +13,7 @@ def resources(target):
     resources_list = [
         ["https://exchange.xforce.ibmcloud.com/url/" + url, "instantresultwrapper"],
         ["https://www.virustotal.com/gui/search/" + url, "report"],
-        ["https://urlscan.io/search/"]
+        ["https://www.abuseipdb.com/check/" + url , "well"]
     ]
 
     return resources_list
@@ -66,3 +66,19 @@ def open_folder(target):
 
 def get_config_path():
     return os.path.join(os.getcwd(), "config", "config.init")
+
+
+def banner():
+    os.system("cls")
+    print("""
+    __ __  ____   _             ____     ___  ____  __ __  ______   ____  ______  ____  ___   ____  
+    |  |  ||    \ | |           |    \   /  _]|    \|  |  ||      | /    ||      ||    |/   \ |    \ 
+    |  |  ||  D  )| |     _____ |  D  ) /  [_ |  o  )  |  ||      ||  o  ||      | |  ||     ||  _  |
+    |  |  ||    / | |___ |     ||    / |    _]|   _/|  |  ||_|  |_||     ||_|  |_| |  ||  O  ||  |  |
+    |  :  ||    \ |     ||_____||    \ |   [_ |  |  |  :  |  |  |  |  _  |  |  |   |  ||     ||  |  |
+    |     ||  .  \|     |       |  .  \|     ||  |  |     |  |  |  |  |  |  |  |   |  ||     ||  |  |
+    \__,_||__|\_||_____|       |__|\_||_____||__|   \__,_|  |__|  |__|__|  |__|  |____|\___/ |__|__|
+                                                                                                    
+
+    """)
+    print("\tVersion: 0.1v")
